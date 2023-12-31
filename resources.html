@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Stop Watch</title>
+</head>
+<header>
+  <nav class="navbar">
+      <span class="hamburger-btn material-symbols-rounded">menu</span>
+      <a href="#" class="logo">
+          <!--<img src="background.jpg" alt="logo"> -->
+          <h2>CodEvents</h2>
+      </a>
+      <ul class="links">
+          <span class="close-btn material-symbols-rounded">close</span>
+          <li><a href="home.php">Home</a></li>
+          <li><a href="trycon.html">Contests</a></li>
+          <li><a href="resources.html">Resouces</a></li>
+          <li><a href="reminder.html">Reminder</a></li>
+          <li><a href="account.html">Account</a></li>
+      </ul>
+      <!--<button class="login-btn">LOG IN</button>-->
+  </nav>
+
+</header>
+<style>
+* {
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+
+}
+
+/*body {
+    height: 100vh;
+    width: 100%;
+   /* background-image: linear-gradient(black, #00838d);
+    background-image: url("backone.jpg"); /*center/cover no-repeat;
+    
+}*/
+/*header {
+    padding: 20px; 
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    height:
+    z-index: 100; 
+}*/
+/* Reset default margin and padding for the ul and li elements */
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the list items (li) to display inline and add some spacing */
+.navbar li {
+    display: inline;
+    margin-right: 20px;
+    float:right;
+}
+
+/* Style the anchor tags (links) */
+.navbar a {
+    text-decoration: none;
+    color:#333/* Change the link color to your preference */
+}
+
+/* Style the navbar to be fixed at the top of the page */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+     /* Change the background color to your preference */
+    padding: 10px;
+    /*box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);  Add a shadow for a visual effect */
+    font-size:20px;
+}
+ .name{
+    float:left;
+}
+
+/* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    transition: all .2s ease;
+}*/
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-image:url("backone.jpg");
+    float: left;
+    margin-left: 10%;
+
+
+}
+
+main {
+    width: 22.5em;
+    display: inline-block;
+    background-color: #363636;
+    color: #fff;
+    border-radius: .25em;
+    box-shadow: .2em .2em 2em rgba(0, 0, 0, .2);
+}
+#time {
+    display: flex;
+    justify-content: center;
+    font-size: 4rem;
+}
+p {
+    height: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#time_hour, #time_min, #time_sec {
+    width: 1.5em;
+}
+#buttons {
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: center;
+}
+.btn {
+    width: 5.5em;
+    height: 2em;
+    margin: .1em;
+    font-size: 1.1rem;
+    background-color: #00ccff;
+    color: #000;
+    border: none;
+    outline: none;
+}
+.btn:hover {
+    transform: scale(1.1);
+    background-color: #00ccff;
+}
+#btn_start {
+    border-radius: .5em 0 0 .5em;
+}
+#btn_pause {
+    border-radius: 0 .5em .5em 0;
+}
+.grid{
+    display: grid;
+    gap: 1rem;
+    
+}
+.practice-set{
+    content: ' ';
+    /* border: 1px solid green; */
+    position: absolute;
+    top: 20%;
+    left:500px;
+    /* bottom: -0.5rem; */
+    height: 25rem;
+    width:50%;
+    background: whitesmoke;
+    float:right;
+
+
+}
+
+.ext{
+    content: ' ';
+    /* border: 1px solid green; */
+    position: absolute;
+    top: 20%;
+    left:500px;
+    /* bottom: -0.5rem; */
+    height: 25rem;
+    width:50%;
+    background: whitesmoke;
+    float:right;
+}
+
+
+.nav_list{
+grid-template-columns: repeat(2,1fr);
+}
+.wrap{
+    /* border: 3px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    cursor: pointer;
+    border-radius: 2rem;
+    padding: 1rem;
+    transition: .5s;
+    height: 0%;
+    width: 0%;
+}
+.p{
+    margin-top: 60%;
+    float:left;
+    color: #fff;
+}
+.practice :hover{
+    width: 15%;
+    height: 10%;
+    color: #ff0090;
+}
+
+</style>
+
+<p>
+    <div class="header">
+    <div>
+        <div id="time">
+            <p id="time_hour">00</p>
+            <p>:</p>
+            <p id="time_min">00</p>
+            <p>:</p>
+            <p id="time_sec">00</p>
+        </div>
+        <div id="buttons">
+            <button class="btn" id="btn_start">Start</button>
+            <button class="btn" id="btn_reset">Reset</button>
+            <button class="btn" id="btn_pause">Pause</button>
+        </div>
+        </div>
+    </main>
+
+    <script>
+ let hour = document.getElementById("time_hour");
+let min = document.getElementById("time_min");
+let sec = document.getElementById("time_sec");
+let start = document.getElementById("btn_start");
+let reset = document.getElementById("btn_reset");
+let pause = document.getElementById("btn_pause");
+
+
+/// Variable
+let _hour = 0;
+let _min = 0;
+let _sec = 0;
+let runing = false;
+let timer;
+
+
+// Event Listener
+start.addEventListener("click", fStart);
+reset.addEventListener("click", fReset);
+pause.addEventListener("click", fPause);
+
+
+// Function
+function fStart() {
+    if (!runing) {
+        runing = true;
+        timer = setInterval(() => {
+            _sec += 1;
+            if (_sec === 60){
+                _sec = 0;
+                _min += 1;
+            };
+            if (_min === 60) {
+                _min = 0;
+                _hour += 1;
+            };
+            if (_hour === 24) {
+                _hour = 0;
+            };
+            sec.innerText = _sec;
+            min.innerText = _min;
+            hour.innerText = _hour;
+        }, 1000);
+    };
+};
+
+function fReset() {
+    runing = false;
+    clearInterval(timer);
+    _hour = 0;
+    _min = 0;
+    _sec = 0;
+    hour.innerText = _hour;
+    min.innerText = _min;
+    sec.innerText = _sec;
+};
+
+function fPause() {
+    runing = false;
+    clearInterval(timer);
+};
+/*<button type="button" 
+             on click="window.open(' ','self','');window.close();">Discard</button>
+</script>
+   <p class="tag">set timer and track your time managment</p>
+      <button class="practice" button type="button" >
+      <a class="practice" href="practice-set.html">click here to explore the practice resources</a>
+    </button>
+    <button class="ext" button type="button" >
+        <a class="ext" href="index.html">contest data</a>
+      </button>
+</body>
+</html>
