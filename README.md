@@ -1,0 +1,1 @@
+This website integrates coding competitions from multiple platforms, displaying real-time dates and timings using third-party APIs. It serves as a centralized hub for competitive programmers to stay updated on upcoming contests.
